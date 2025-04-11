@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Feedback from '../Feedback'
+const apiUrl = import.meta.env.VITE_API_URL;
 
 import { createPost } from "../../utils/handelPost";
 
@@ -18,7 +19,7 @@ export default function CreatePost() {
     }
 
     setLoading(true);
-    const response = await createPost({ content });
+    const response = await createPost({ content }, apiUrl);
 
     setSuccess(response.success);
     setMessage(response.message);
