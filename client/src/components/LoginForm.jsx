@@ -7,8 +7,8 @@ const apiUrl = import.meta.env.VITE_API_URL;
 
 
 export default function LoginForm({ setCurrentView }) {
-  const [email, setEmail] = useState('james@example.com');
-  const [password, setPassword] = useState('supersecret');
+  const [email, setEmail] = useState('giterejames10@gmail.com');
+  const [password, setPassword] = useState('111111111');
   const [success, setSuccess] = useState(null);
   const [message, setMessage] = useState(null);
   const navigate = useNavigate()
