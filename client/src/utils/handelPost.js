@@ -3,7 +3,7 @@ import axios from "axios";
 // Create a Post
 export const createPost = async (postData, apiUrl) => {
   try {
-    const response = await axios.post(`${apiUrl}/posts/new-post`, postData, {
+    const response = await axios.post(`${apiUrl}/api/posts/new-post`, postData, {
       withCredentials: true, // required to send session cookie
     });
 

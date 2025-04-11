@@ -5,6 +5,7 @@ import { loginUser } from '../utils/handleAuth';
 import { useNavigate } from 'react-router-dom';
 const apiUrl = import.meta.env.VITE_API_URL;
 
+
 export default function LoginForm({ setCurrentView }) {
   const [email, setEmail] = useState('james@example.com');
   const [password, setPassword] = useState('supersecret');
