@@ -18,6 +18,7 @@ export const registerUser = async (formData, apiUrl) => {
 
 // Login User
 export const loginUser = async (formData, apiUrl) => {
+  console.log("apiUrl", apiUrl);
   try {
     const response = await axios.post(`${apiUrl}/auth/login`, formData, {
       withCredentials: true, // for session cookie
