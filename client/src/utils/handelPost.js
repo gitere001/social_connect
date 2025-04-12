@@ -3,7 +3,7 @@ import axios from "axios";
 // Create a Post
 export const createPost = async (postData, apiUrl) => {
   try {
-    const response = await axios.post(`${apiUrl}posts/new-post`, postData, {
+    const response = await axios.post(`${apiUrl}/api/posts/new-post`, postData, {
       withCredentials: true, // required to send session cookie
     });
 
@@ -23,7 +23,7 @@ export const createPost = async (postData, apiUrl) => {
 // Fetch User's Posts
 export const fetchUsersPost = async (apiUrl) => {
   try {
-    const response = await axios.get(`${apiUrl}posts/my-posts`, {
+    const response = await axios.get(`${apiUrl}/api/posts/my-posts`, {
       withCredentials: true,
     });
 
@@ -42,7 +42,7 @@ export const fetchUsersPost = async (apiUrl) => {
 // Fetch Other Users' Posts
 export const fetchOtherUsersPost = async (apiUrl) => {
   try {
-    const response = await axios.get(`${apiUrl}posts/other-posts`, {
+    const response = await axios.get(`${apiUrl}/api/posts/other-posts`, {
       withCredentials: true,
     });
 
