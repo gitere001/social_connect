@@ -3,6 +3,10 @@
 	  {
 		"source": "/:path*",
 		"destination": "http://178.128.43.230/socialConnect/:path*"
+	  },
+	  {
+		"source": "/:path*",
+		"destination": "/index.html"
 	  }
 	]
   }
