@@ -1,11 +1,11 @@
 {
 	"rewrites": [
 	  {
-		"source": "/:path*",
-		"destination": "http://178.128.43.230/socialConnect/:path*"
+		"source": "/api/:path*",
+		"destination": "http://178.128.43.230/socialConnect/api/:path*"
 	  },
 	  {
-		"source": "/:path*",
+		"source": "/(.*)",
 		"destination": "/index.html"
 	  }
 	]

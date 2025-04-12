@@ -3,7 +3,7 @@ import axios from "axios";
 // Register User
 export const registerUser = async (formData, apiUrl) => {
   try {
-    const response = await axios.post(`${apiUrl}/api/auth/register`, formData);
+    const response = await axios.post(`${apiUrl}auth/register`, formData);
     return {
       success: true,
       message: response.data.message,
@@ -20,7 +20,7 @@ export const registerUser = async (formData, apiUrl) => {
 export const loginUser = async (formData, apiUrl) => {
   console.log("apiUrl", apiUrl);
   try {
-    const response = await axios.post(`${apiUrl}/api/auth/login`, formData, {
+    const response = await axios.post(`${apiUrl}auth/login`, formData, {
       withCredentials: true, // for session cookie
     });
     return {
@@ -38,7 +38,7 @@ export const loginUser = async (formData, apiUrl) => {
 // Logout User
 export const logoutUser = async (apiUrl) => {
   try {
-    const response = await axios.post(`${apiUrl}/api/auth/logout`, {}, {
+    const response = await axios.post(`${apiUrl}auth/logout`, {}, {
       withCredentials: true,
     });
     return {
@@ -55,7 +55,7 @@ export const logoutUser = async (apiUrl) => {
 
 const checkIfUserIsLoggedIn = async (apiUrl) => {
   try {
-    const response = await axios.get(`${apiUrl}/api/auth/check-auth`, {
+    const response = await axios.get(`${apiUrl}auth/check-auth`, {
       withCredentials: true,
     });
 
