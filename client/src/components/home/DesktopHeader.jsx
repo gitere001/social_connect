@@ -29,7 +29,7 @@ export default function DesktopHeader() {
     <header className="bg-white shadow-sm">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         <div>
-          <a  onClick={navigate("/home")} className="text-purple-400 font-medium text-xl">
+          <a  onClick={()=> window.scrollTo({ top: 0, behavior: "smooth" })} className="text-purple-400 font-medium text-xl">
             Connect Social
           </a>
         </div>
@@ -59,7 +59,7 @@ export default function DesktopHeader() {
         </div>
 
         <div className="flex items-center space-x-6">
-          <a onClick={navigate("/home")} className="text-gray-600 hover:text-purple-500">
+          <a onClick={()=> window.scrollTo({ top: 0, behavior: "smooth" })} className="text-gray-600 hover:text-purple-500">
             <svg
               className="h-6 w-6"
               xmlns="http://www.w3.org/2000/svg"
@@ -75,7 +75,7 @@ export default function DesktopHeader() {
               />
             </svg>
           </a>
-          <a href="#" className="text-gray-600 hover:text-purple-500">
+          <a onClick={()=> window.scrollTo({ top: 0, behavior: "smooth" })} className="text-gray-600 hover:text-purple-500">
             <svg
               className="h-6 w-6"
               xmlns="http://www.w3.org/2000/svg"

@@ -5,14 +5,20 @@ const register = async (req, res) => {
   const { email, username, password } = req.body;
 
   try {
-    const existingUser = await prisma.user.findUnique({
-      where: {
-        email,
-      },
+    const existingEmail = await prisma.user.findUnique({
+      where: { email },
     });
 
-    if (existingUser) {
-      return res.status(400).json({ message: 'User already exists' });
+    if (existingEmail) {
+      return res.status(400).json({ message: 'Email is already taken' });
+    }
+
+    const existingUsername = await prisma.user.findUnique({
+      where: { username },
+    });
+
+    if (existingUsername) {
+      return res.status(400).json({ message: 'Username is already taken' });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -27,9 +33,11 @@ const register = async (req, res) => {
 
     res.status(201).json({ message: 'User created successfully', user: newUser });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ message: 'Error registering user', error });
   }
 };
+
 
 const login = async (req, res) => {
   const { email, password } = req.body;
@@ -67,5 +75,12 @@ const logout = (req, res) => {
     res.json({ message: 'Logged out successfully' });
   });
 };
+const checkAuth = (req, res) => {
+  if (req.session && req.session.user) {
+    return res.status(200).json({ loggedIn: true, user: req.session.user });
+  } else {
+    return res.status(401).json({ loggedIn: false, message: 'Not authenticated' });
+  }
+};
 
-module.exports = { register, login, logout };
+module.exports = { register, login, logout, checkAuth };

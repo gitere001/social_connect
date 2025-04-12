@@ -1,9 +1,8 @@
 import { useState } from "react";
-import Feedback from '../Feedback'
+import Feedback from '../Feedback';
 const apiUrl = import.meta.env.VITE_API_URL;
 
 import { createPost } from "../../utils/handelPost";
-
 
 export default function CreatePost() {
   const [content, setContent] = useState("");
@@ -15,6 +14,10 @@ export default function CreatePost() {
     if (!content.trim()) {
       setSuccess(false);
       setMessage("Post content cannot be empty");
+      setTimeout(() => {
+        setSuccess(null);
+        setMessage(null);
+      }, 2000);
       return;
     }
 
@@ -38,9 +41,9 @@ export default function CreatePost() {
   return (
     <div className="bg-white rounded-lg shadow-sm">
       {success !== null && (
-        <div className="p-4 pt-3">
+
           <Feedback isSuccess={success} message={message} />
-        </div>
+        
       )}
 
       <div className="p-4">

@@ -52,3 +52,21 @@ export const logoutUser = async (apiUrl) => {
     };
   }
 };
+
+const checkIfUserIsLoggedIn = async (apiUrl) => {
+  try {
+    const response = await axios.get(`${apiUrl}/api/auth/check-auth`, {
+      withCredentials: true,
+    });
+
+    if (response.status === 200 && response.data.loggedIn) {
+      return { isLogged: true };
+    } else {
+      return { isLogged: false };
+    }
+  } catch (error) {
+    console.log(error);
+    return { isLogged: false };
+  }
+};
+export default checkIfUserIsLoggedIn

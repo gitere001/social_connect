@@ -56,7 +56,7 @@ export default function MobileNavigation() {
       </i>
 
       <button
-        onClick={() => navigate("/create")}
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         className="flex flex-col items-center text-gray-500 hover:text-purple-500"
       >
         <svg

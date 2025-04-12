@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import FormInput from './FormInput';
 import { registerUser } from '../utils/handleAuth';
 import Feedback from './Feedback';
@@ -12,16 +12,20 @@ export default function RegisterForm({ setCurrentView }) {
   const [success, setSuccess] = useState(null);
   const [message, setMessage] = useState(null);
 
+  useEffect(() => {
+    if (success !== null && message) {
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 100);
+    }
+  }, [success, message]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
       setSuccess(false);
-      setMessage("Passwords do not match.");
-      setTimeout(() => {
-        setSuccess(null);
-        setMessage(null);
-      }, 2000);
+      setMessage('Passwords do not match.');
       return;
     }
 
@@ -41,21 +45,18 @@ export default function RegisterForm({ setCurrentView }) {
       setMessage(null);
 
       if (response.success) {
-        // Optionally clear form fields
         setUsername('');
         setEmail('');
         setPassword('');
         setConfirmPassword('');
-        setCurrentView('login'); // Optional: redirect to login after register
+        setCurrentView('login');
       }
     }, 2000);
   };
 
   return (
     <div className="bg-white p-4 rounded-lg shadow-sm">
-      {success !== null && (
-        <Feedback isSuccess={success} message={message} />
-      )}
+      {success !== null && <Feedback isSuccess={success} message={message} />}
 
       <h2 className="text-2xl font-bold mb-1">Create an account</h2>
       <p className="text-gray-500 text-sm mb-6">
@@ -105,7 +106,7 @@ export default function RegisterForm({ setCurrentView }) {
 
       <div className="text-center mt-4">
         <p className="text-sm text-gray-600">
-          Already have an account?{" "}
+          Already have an account?{' '}
           <button
             onClick={() => setCurrentView('login')}
             className="text-purple-500 hover:underline"
